@@ -28,6 +28,22 @@ static char *colors[][3] = {
        [SchemeSel]  = { selfgcolor,  selbgcolor,  selbordercolor  },
 };
 
+static const char *const autostart[] = {
+	"remaps", NULL,
+    "setbg", NULL,
+    "dwmblocks", NULL,
+    "dunst", NULL,
+    "xset r rate 300 50", NULL,
+    "fusuma", NULL,
+    "matebook-applet", "-icon", "/home/uriah/Pictures/huawei-logo.svg", NULL,
+    "unclutter", NULL,
+    "compton", NULL,
+    "sh", "-c", "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1", NULL,
+    "clipmenud", NULL,
+    "optimus-manager-qt", NULL,
+	NULL /* terminate */
+};
+
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
