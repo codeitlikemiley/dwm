@@ -1,4 +1,4 @@
-# Goldcoders's build of DWM
+# Goldcoders's build of DWM for Huawei Matebook 13
 
 ## Patches
 - Systray
