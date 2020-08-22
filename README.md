@@ -4,6 +4,7 @@
 - Systray
 - Pertag
 - Center Float Window
+- Cool Auto-start script (fixes background task taking too long for it to reboot or shutdown)
 ## Layouts
 - Title
 - BottomStack
