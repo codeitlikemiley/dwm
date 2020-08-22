@@ -1,4 +1,4 @@
-# DWM 
+# Goldcoders's build of DWM
 
 ## Patches
 - Systray
