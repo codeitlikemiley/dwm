@@ -32,11 +32,6 @@
 ```
 xf86-video-intel
 xf86-video-vesa
-extra/mesa
-extra/opencl-mesa
-lib32-glu
-lib32-mesa
-lib32-opencl-mesa
 ```
 
 - I remove nouveau package since im using nvidia ( and its better on performance)
@@ -46,10 +41,6 @@ lib32-opencl-mesa
 ```
 nvidia
 nvidia-prime
-nvidia-utils
-lib32-nvidia-utils
-libxnvctrl
-egl-wayland
 ```
 
 > Hybrid Mode uses `nvidia-prime` allows us to use prime-run (on demand GPU max 60fps)
@@ -78,10 +69,8 @@ Exec=/bin/sh -c 'while read -r trg; do case $trg in linux) exit 0; esac; done; /
 
 > Install vulkan packages
 ```
-vulkan-icd-loader
 vulkan-intel
 vulkan-tools
-lib32-vulkan-icd-loader
 gpu-viewer
 ```
 
