@@ -88,6 +88,19 @@ lightdm-webkit-theme-aether-git
 
 - lightdm is needed to properly switch GPU
 
+
+create dwm session `sudo vim /usr/share/xsessions/dwm.desktop` for lightdm
+
+```
+[Desktop Entry]
+Encoding=UTF-8
+Name=Dwm
+Comment=Dynamic window manager
+Exec=dwm
+Icon=dwm
+Type=XSession
+```
+
 change greeter-session and user-session
 
 ```
@@ -127,9 +140,6 @@ XSession=dwm
 Icon=/var/lib/AccountsService/icons/sudoken.jpg
 SystemAccount=false
 ```
-
-
-any theme of lightdm will do, but ive installed aether.
 
 this is my optimus.conf
 /etc/optimus-manager/optimus-manager.conf
@@ -172,60 +182,6 @@ my ~/.xinitrc
 ssh-agent dwm
 ```
 
-my  config for lightdm
-
-/etc/lightdm/lightdm conf
-```
-[LightDM]
-run-directory=/run/lightdm
-
-[Seat:*]
-greeter-session=lightdm-webkit2-greeter
-user-session=dwm
-session-wrapper=/etc/lightdm/Xsession
-```
-
-config for lightdm-webkit2-greeter
-
-```
-[greeter]
-debug_mode          = false
-detect_theme_errors = true
-screensaver_timeout = 300
-secure_mode         = true
-time_format         = LT
-time_language       = auto
-webkit_theme        = lightdm-webkit-theme-aether
-[branding]
-background_images = /usr/share/backgrounds
-logo              = /usr/share/pixmaps/archlinux-logo.svg
-user_image        = /usr/share/pixmaps/user.svg
-```
-
-ive only modified here is the user_image added image on that path.
-and added 644 permission on that image or it wont show at all.
-
-When I manually patched DWM , it doesnt come with dwm.desktop file
-
-This  is needed so I can use it inside lightdm
-this line is telling to use dwm as session
-```
-user-session=dwm
-```
-
-so to fix it ive added manually by creating a file
-
-/usr/share/xsessions/dwm.desktop
-```
-[Desktop Entry]
-Encoding=UTF-8
-Name=Dwm
-Comment=Dynamic window manager
-Exec=dwm
-Icon=dwm
-Type=XSession
-```
-
 i do have  this lightdm config installed by optimus manager
 
 /etc/lightdm/lightdm.conf.d/20-optimus-manager.conf 
@@ -240,7 +196,7 @@ display-stopped-script=/sbin/prime-switch
 ```
 
 
-Another thing to Add either on your .zshrc or .bashrc
+Another thing to Add either on your .zshrc
 This is needed for vulkan to reference proper GPU like intel and NVIDIA
 
 ```
