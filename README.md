@@ -88,6 +88,47 @@ lightdm-webkit-theme-aether-git
 
 - lightdm is needed to properly switch GPU
 
+change greeter-session and user-session
+
+```
+sudo sed -i 's/^\(#?greeter\)-session\s*=\s*\(.*\)/greeter-session = lightdm-webkit2-greeter #\1/ #\2g' /etc/lightdm/lightdm.conf
+sudo sed -i 's/^\(#?user\)-session\s*=\s*\(.*\)/user-session = dwm #\1/ #\2g' /etc/lightdm/lightdm.conf
+```
+
+use aether theme
+```
+sudo sed -i 's/^webkit_theme\s*=\s*\(.*\)/webkit_theme = lightdm-webkit-theme-aether #\1/g' /etc/lightdm/lightdm-webkit2-greeter.conf
+```
+
+add your wallpaper 
+
+```
+cd /usr/share/lightdm-webkit/themes/lightdm-webkit-theme-aether/src/img/wallpapers
+sudo wget url_to_wallpaper
+sudo chmod 644 wallpaper.png
+```
+
+change avatar
+
+```
+cd /var/lib/AccountsService/icons
+sudo wget https://avatars.dicebear.com/api/avataaars/sudoken.svg
+sudo chmod 644 sudoken.svg
+sudo mv sudoken.svg avatar.svg
+sudo vim /var/lib/AccountsService/users/${whoami)
+```
+
+update /var/lib/AccountsService/users/${whoami)
+
+```
+[User]
+Session=default
+XSession=dwm
+Icon=/var/lib/AccountsService/icons/sudoken.jpg
+SystemAccount=false
+```
+
+
 any theme of lightdm will do, but ive installed aether.
 
 this is my optimus.conf
