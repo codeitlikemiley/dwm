@@ -1,33 +1,34 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 0;        /* border pixel of windows */
-static const unsigned int snap      = 32;       /* snap pixel */
+static const unsigned int borderpx       = 0;        /* border pixel of windows */
+static const unsigned int snap           = 32;       /* snap pixel */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayspacing = 20;   /* systray spacing */
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
-static const int showsystray        = 1;     /* 0 means no systray */
-static const unsigned int gappih    = 20;       /* horiz inner gap between windows */
-static const unsigned int gappiv    = 10;       /* vert inner gap between windows */
-static const unsigned int gappoh    = 10;       /* horiz outer gap between windows and screen edge */
-static const unsigned int gappov    = 30;       /* vert outer gap between windows and screen edge */
-static const int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
-static const int showbar            = 1;        /* 0 means no bar */
-static const int topbar             = 1;        /* 0 means bottom bar */
-static const int focusonwheel       = 0;
-static const char *fonts[]          = { "VictorMonoNerdFont:size=16", "JoyPixels:pixelsize=18:antialias=true:autohint=true"  };
-static char dmenufont[]       = "VictorMonoNerdFont:size=16";
-static char normbgcolor[]           = "#222222";
-static char normbordercolor[]       = "#444444";
-static char normfgcolor[]           = "#F9FAFB";
-static char selfgcolor[]            = "#FFFFFF";
-static char selbordercolor[]        = "#FE80AB";
-static char selbgcolor[]            = "#FE80AB";
-static char *colors[][3] = {
+static const int showsystray             = 1;     /* 0 means no systray */
+static const unsigned int gappih         = 20;       /* horiz inner gap between windows */
+static const unsigned int gappiv         = 10;       /* vert inner gap between windows */
+static const unsigned int gappoh         = 10;       /* horiz outer gap between windows and screen edge */
+static const unsigned int gappov         = 30;       /* vert outer gap between windows and screen edge */
+static const int smartgaps               = 0;        /* 1 means no outer gap when there is only one window */
+static const int showbar                 = 1;        /* 0 means no bar */
+static const int topbar                  = 1;        /* 0 means bottom bar */
+static const int focusonwheel            = 0;
+static const char *fonts[]               = { "VictorMonoNerdFont:size=16", "JoyPixels:pixelsize=18:antialias=true:autohint=true"  };
+static char dmenufont[]                  = "VictorMonoNerdFont:size=16";
+static char normbgcolor[]                = "#E6E3F7";
+static char normbordercolor[]            = "#E6E3F7";
+static char normfgcolor[]                = "#25188B";
+static char selfgcolor[]                 = "#FF4081";
+static char selbordercolor[]             = "#C9C4EE";
+static char selbgcolor[]                 = "#C9C4EE";
+static char *colors[][3]                 = {
        /*               fg           bg           border   */
        [SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
        [SchemeSel]  = { selfgcolor,  selbgcolor,  selbordercolor  },
 };
+
 static const char *const autostart[] = {
     "dwmblocks", NULL,
     "dunst", NULL,
@@ -67,26 +68,26 @@ static const Rule rules[] = {
 };
 
 /* layout(s) */
-static const float mfact     = 0.6; /* factor of master area size [0.05..0.95] */
-static const int nmaster     = 1;    /* number of clients in master area */
-static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
-#define FORCE_VSPLIT 1  /* nrowgrid layout: force two clients to always split vertically */
+static const float mfact     = 0.6;     /* factor of master area size [0.05..0.95] */
+static const int nmaster     = 1;       /* number of clients in master area */
+static const int resizehints = 1;       /* 1 means respect size hints in tiled resizals */
+#define FORCE_VSPLIT 1                  /* nrowgrid layout: force two clients to always split vertically */
 #include "vanitygaps.c"
 static const Layout layouts[] = {
-	/* symbol     arrange function */
- 	{ "🌾",	tile },			/* layout:0, Default: Master on left, slaves on right */
-	{ "🍱",	bstack },		/* layout:1, Master on top, slaves on bottom */
+	/* symbol                           arrange function */
+ 	{ "🌾",	tile },			            /* layout:0, Default: Master on left, slaves on right */
+	{ "🍱",	bstack },		            /* layout:1, Master on top, slaves on bottom */
 
-	{ "🍥",	spiral },		/* layout:2, Fibonacci spiral */
-	{ "🍭",	dwindle },		/* layout:3, Decreasing in size right and leftward */
+	{ "🍥",	spiral },		            /* layout:2, Fibonacci spiral */
+	{ "🍭",	dwindle },		            /* layout:3, Decreasing in size right and leftward */
 
-	{ "🃏",	deck },			/* layout:4, Master on left, slaves in monocle-like mode on right */
- 	{ "🥪",	monocle },		/* layout:5, All windows on top of eachother */
+	{ "🃏",	deck },			            /* layout:4, Master on left, slaves in monocle-like mode on right */
+ 	{ "🥪",	monocle },		            /* layout:5, All windows on top of eachother */
 
-	{ "🐙",	centeredmaster },		/* layout:6, Master in middle, slaves on sides */
+	{ "🐙",	centeredmaster },		    /* layout:6, Master in middle, slaves on sides */
 	{ "🛸",	centeredfloatingmaster },	/* layout:7, Same but master floats */
 
-	{ "🚧",	NULL },			/* layout:8, no layout function means floating behavior */
+	{ "🚧",	NULL },			            /* layout:8, no layout function means floating behavior */
 	{ NULL,		NULL },
 };
 
@@ -120,9 +121,7 @@ static Key keys[] = {
 	/* modifier                     key        function        argument */
 	STACKKEYS(MODKEY,                          focus)
 	STACKKEYS(MODKEY|ShiftMask,                push)
-	/* { MODKEY|ShiftMask,		XK_Escape,	spawn,	SHCMD("") }, */
-	{ MODKEY,			XK_Escape,	spawn,	SHCMD("dmenuunicode") },
-	/* { MODKEY|ShiftMask,		XK_grave,	togglescratch,	SHCMD("") }, */
+	{ MODKEY,			XK_Escape,	spawn,	   SHCMD("dmenuunicode") },
 	TAGKEYS(			XK_1,		0)
 	TAGKEYS(			XK_2,		1)
 	TAGKEYS(			XK_3,		2)
@@ -142,9 +141,8 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,	XK_BackSpace,	spawn,	SHCMD("killall redshift-gtk || redshift-gtk") },
 
 	{ MODKEY,			XK_Tab,		view,		{0} },
-	/* { MODKEY|ShiftMask,		XK_Tab,		spawn,		SHCMD("") }, */
 	{ MODKEY,			XK_q,		killclient,	{0} },
-	{ MODKEY|ShiftMask,			XK_q,		spawn,	SHCMD("{ killall compton || setsid compton & } ; xwallpaper --zoom ~/.config/wall.png") },
+	{ MODKEY|ShiftMask,	XK_q,		spawn,	    SHCMD("{ killall compton || setsid compton & } ; xwallpaper --zoom ~/.config/wall.png") },
 	{ MODKEY,	        XK_w,		spawn,		SHCMD("st -e nmtui") },
 	{ MODKEY|ShiftMask,	XK_w,		spawn,		SHCMD("toggle_bluetooth") },
 	{ MODKEY,	        XK_e,		spawn,		SHCMD("dmenu_edit") },
@@ -164,10 +162,10 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,	XK_o,		incnmaster,     {.i = -1 } },
 	{ MODKEY,			XK_p,		spawn,		SHCMD("displayselect") },
 	{ MODKEY|ShiftMask,	XK_p,		spawn,		SHCMD("recent") },
-	//{ MODKEY,			XK_bracketleft,		spawn,		SHCMD("") },
-	//{ MODKEY|ShiftMask,	XK_bracketleft,		spawn,		SHCMD("") },
-	//{ MODKEY,			XK_bracketright,	spawn,		SHCMD("") },
-	//{ MODKEY|ShiftMask,	XK_bracketright,	spawn,		SHCMD("") },
+  //{ MODKEY,			XK_bracketleft,		spawn,		SHCMD("") },
+  //{ MODKEY|ShiftMask,	XK_bracketleft,		spawn,		SHCMD("") },
+  //{ MODKEY,			XK_bracketright,	spawn,		SHCMD("") },
+  //{ MODKEY|ShiftMask,	XK_bracketright,	spawn,		SHCMD("") },
     { MODKEY,			XK_backslash,		spawn,		SHCMD("st -e neomutt ; pkill -RTMIN+12 dwmblocks") },
 	{ MODKEY|ShiftMask,	XK_backslash,		spawn,		SHCMD("mailsync") },
 	{ MODKEY,		    XK_slash,	spawn,		SHCMD("mpc toggle") },
@@ -177,7 +175,7 @@ static Key keys[] = {
     { MODKEY|ShiftMask,	XK_comma,	spawn,		SHCMD("lmc back 10") },
 	{ MODKEY|ShiftMask,	XK_period,	spawn,		SHCMD("lmc forward 10") },
     { MODKEY,	        XK_a,		spawn,		SHCMD("sirula") },
-	{ MODKEY|ShiftMask,	        XK_a,		spawn,		SHCMD("st -e pulsemixer;pkill -RTMIN+10 dwmblocks") },
+	{ MODKEY|ShiftMask,	XK_a,		spawn,		SHCMD("st -e pulsemixer;pkill -RTMIN+10 dwmblocks") },
     { MODKEY,		    XK_s,		spawn,		SHCMD("pavucontrol") },
 	{ MODKEY|ShiftMask,	XK_s,		spawn,		SHCMD("st -e alsamixer") },
 	{ MODKEY|ControlMask,	XK_s,		spawn,		SHCMD("newscaster") },
@@ -193,7 +191,7 @@ static Key keys[] = {
 	{ MODKEY,			XK_l,		setmfact,      	{.f = +0.01} },
     { MODKEY|ShiftMask,	XK_l,		spawn,	SHCMD("st -e tuts")},
 	{ MODKEY,			XK_apostrophe,	shiftview,	{ .i = -1 } },
-	{ MODKEY|ShiftMask,			XK_apostrophe,	shiftview,	{ .i = 1 } },
+	{ MODKEY|ShiftMask,	XK_apostrophe,	shiftview,	{ .i = 1 } },
 	{ MODKEY,			XK_Return,	spawn,		{.v = termcmd } },
     { MODKEY|ShiftMask,	XK_Return,	spawn,		SHCMD("alacritty") },
 	{ MODKEY,		    XK_grave,	togglescratch,	{.v = scratchpadcmd } },
@@ -208,9 +206,9 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,	XK_v,		spawn,		SHCMD("st -e $EDITOR -c \"VimwikiIndex\"") },
 	{ MODKEY|ShiftMask,			XK_b,		togglebar,	{0} },
 
-	{ MODKEY,	XK_b,		spawn,		SHCMD("brave") },
+	{ MODKEY,	        XK_b,		spawn,		SHCMD("brave") },
 	{ MODKEY,			XK_n,		spawn,		SHCMD("st -e newsboat") },
-	{ MODKEY|ShiftMask,		XK_n,		spawn,		SHCMD("newsup") },
+	{ MODKEY|ShiftMask,	XK_n,		spawn,		SHCMD("newsup") },
 	{ MODKEY,			XK_m,		spawn,		SHCMD("st -e ncmpcpp") },
     { MODKEY|ShiftMask,	XK_m,		spawn,		SHCMD("mpc up") },
 
