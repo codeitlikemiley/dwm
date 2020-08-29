@@ -39,7 +39,7 @@ static const char *const autostart[] = {
 };
 
 /* tagging */
-static const char *tags[] = { "", "", "", "﬏", "", "", "戮", "", "" };
+static const char *tags[] = { "1:", "2:", "3:", "4:﬏", "5:", "6:", "7:戮", "8:", "9:" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -55,9 +55,11 @@ static const Rule rules[] = {
 	{ "Gimp",               NULL,                   NULL,       1 << 5,       0,           0,         1,        -1 },
 	{ "Inkscape",           NULL,                   NULL,       1 << 5,       0,           0,         1,        -1 },
 	{ "kdenlive",           NULL,                   NULL,       1 << 5,       0,           0,         1,        -1 },
+	{ "mpv",                NULL,                   NULL,       1 << 5,       0,           0,         1,        -1 },
 	{ "Steam",              NULL,                   NULL,       1 << 6,       1,           0,         1,        -1 },
 	{ "dota2",              NULL,                   NULL,       1 << 6,       0,           0,         1,        -1 },
 	{ "Meld",               NULL,                   NULL,       1 << 7,       0,           0,         1,        -1 },
+	{ "Postman",            NULL,                   NULL,       1 << 7,       0,           0,         1,        -1 },
 	{ "Nemo",               NULL,                   NULL,       1 << 8,       0,           0,         1,        -1 },
 	{ "Alacritty",          NULL,                   NULL,       0,            0,           1,         0,        -1 },
 	{ "St",                 NULL,                   NULL,       0,            0,           1,         0,        -1 },
