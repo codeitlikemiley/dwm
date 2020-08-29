@@ -39,7 +39,7 @@ static const char *const autostart[] = {
 };
 
 /* tagging */
-static const char *tags[] = { " ¹", " ²", " ³", "﬏ ⁴", " ⁵", " ⁶", "戮⁷", " ⁸", " ⁹" };
+static const char *tags[] = { " ¹", " ²", " ³", "﬏ ⁴", " ⁵", " ⁶", "戮 ⁷", " ⁸", " ⁹" };
 
 static const Rule rules[] = {
 	/* xprop(1):
