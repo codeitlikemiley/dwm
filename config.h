@@ -4,7 +4,7 @@
 static const unsigned int borderpx  = 0;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
-static const unsigned int systrayspacing = 2;   /* systray spacing */
+static const unsigned int systrayspacing = 5;   /* systray spacing */
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
 static const int showsystray        = 1;     /* 0 means no systray */
 static const unsigned int gappih    = 20;       /* horiz inner gap between windows */
@@ -14,6 +14,7 @@ static const unsigned int gappov    = 30;       /* vert outer gap between window
 static const int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
+static const int focusonwheel       = 0;
 static const char *fonts[]          = { "VictorMonoNerdFont:size=16", "JoyPixels:pixelsize=18:antialias=true:autohint=true"  };
 static char dmenufont[]       = "VictorMonoNerdFont:size=16";
 static char normbgcolor[]           = "#222222";
@@ -38,41 +39,52 @@ static const char *const autostart[] = {
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tags[] = { "", "", "", "﬏", "", "", "戮", "", "" };
 
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     isfloating   isterminal noswallow monitor */
-	{ "Gimp",     NULL,       NULL,       1 << 8,       0,           0,         0,        -1 },
-	{ "St",       NULL,       NULL,       0,            0,           1,         0,        -1 },
-    { "Firefox",  NULL,       "Firefox Preferences",    1 << 8,     True,     -1 },
-    { "Sirula",   NULL,       NULL,       0,            1,           0,         1,     -1 },
+	/* class                instance                title       tags mask     isfloating   isterminal noswallow monitor */
+	{ "Google-chrome",      "google-chrome",        NULL,       1 << 0,       0,           0,         0,        -1 },
+	{ "firefox",            NULL,                   NULL,       1 << 2,       0,           0,         0,        -1 },
+	{ "Brave-browser",      NULL,                   NULL,       1 << 2,       0,           0,         0,        -1 },
+	{ "code-oss",           NULL,                   NULL,       1 << 3,       0,           0,         0,        -1 },
+	{ NULL,NULL,            "Android Emulator - dev:5554",      1 << 4,       1,           0,         0,        -1 },
+	{ "Gimp",               NULL,                   NULL,       1 << 5,       0,           0,         0,        -1 },
+	{ "Inkscape",           NULL,                   NULL,       1 << 5,       0,           0,         0,        -1 },
+	{ "kdenlive",           NULL,                   NULL,       1 << 5,       0,           0,         0,        -1 },
+	{ "Steam",              NULL,                   NULL,       1 << 6,       1,           0,         0,        -1 },
+	{ "dota2",              NULL,                   NULL,       1 << 6,       0,           0,         0,        -1 },
+	{ "Meld",               NULL,                   NULL,       1 << 7,       0,           0,         0,        -1 },
+	{ "Nemo",               NULL,                   NULL,       1 << 8,       0,           0,         0,        -1 },
+	{ "Alacritty",          NULL,                   NULL,       1 << 8,       0,           0,         0,        -1 },
+	{ "St",                 NULL,                   NULL,       1 << 1,       0,           1,         0,        -1 },
+    { "Sirula",             NULL,                   NULL,       0,            1,           0,         1,        -1 },
 };
 
 /* layout(s) */
-static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
+static const float mfact     = 0.6; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
 #define FORCE_VSPLIT 1  /* nrowgrid layout: force two clients to always split vertically */
 #include "vanitygaps.c"
 static const Layout layouts[] = {
 	/* symbol     arrange function */
- 	{ "[]=",	tile },			/* Default: Master on left, slaves on right */
-	{ "TTT",	bstack },		/* Master on top, slaves on bottom */
+ 	{ "🌾",	tile },			/* layout:0, Default: Master on left, slaves on right */
+	{ "🍱",	bstack },		/* layout:1, Master on top, slaves on bottom */
 
-	{ "[@]",	spiral },		/* Fibonacci spiral */
-	{ "[\\]",	dwindle },		/* Decreasing in size right and leftward */
+	{ "🍥",	spiral },		/* layout:2, Fibonacci spiral */
+	{ "🍭",	dwindle },		/* layout:3, Decreasing in size right and leftward */
 
-	{ "H[]",	deck },			/* Master on left, slaves in monocle-like mode on right */
- 	{ "[M]",	monocle },		/* All windows on top of eachother */
+	{ "🃏",	deck },			/* layout:4, Master on left, slaves in monocle-like mode on right */
+ 	{ "🥪",	monocle },		/* layout:5, All windows on top of eachother */
 
-	{ "|M|",	centeredmaster },		/* Master in middle, slaves on sides */
-	{ ">M>",	centeredfloatingmaster },	/* Same but master floats */
+	{ "🐙",	centeredmaster },		/* layout:6, Master in middle, slaves on sides */
+	{ "🛸",	centeredfloatingmaster },	/* layout:7, Same but master floats */
 
-	{ "><>",	NULL },			/* no layout function means floating behavior */
+	{ "🚧",	NULL },			/* layout:8, no layout function means floating behavior */
 	{ NULL,		NULL },
 };
 
