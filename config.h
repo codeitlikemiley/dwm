@@ -4,13 +4,13 @@
 static const unsigned int borderpx       = 0;        /* border pixel of windows */
 static const unsigned int snap           = 32;       /* snap pixel */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
-static const unsigned int systrayspacing = 20;   /* systray spacing */
+static const unsigned int systrayspacing = 0;   /* systray spacing */
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
 static const int showsystray             = 1;     /* 0 means no systray */
-static const unsigned int gappih         = 20;       /* horiz inner gap between windows */
-static const unsigned int gappiv         = 10;       /* vert inner gap between windows */
-static const unsigned int gappoh         = 10;       /* horiz outer gap between windows and screen edge */
-static const unsigned int gappov         = 30;       /* vert outer gap between windows and screen edge */
+static const unsigned int gappih         = 0;       /* horiz inner gap between windows */
+static const unsigned int gappiv         = 0;       /* vert inner gap between windows */
+static const unsigned int gappoh         = 20;       /* horiz outer gap between windows and screen edge */
+static const unsigned int gappov         = 20;       /* vert outer gap between windows and screen edge */
 static const int smartgaps               = 0;        /* 1 means no outer gap when there is only one window */
 static const int showbar                 = 1;        /* 0 means no bar */
 static const int topbar                  = 1;        /* 0 means bottom bar */
@@ -75,19 +75,19 @@ static const int resizehints = 1;       /* 1 means respect size hints in tiled r
 #include "vanitygaps.c"
 static const Layout layouts[] = {
 	/* symbol                           arrange function */
- 	{ "🌾",	tile },			            /* layout:0, Default: Master on left, slaves on right */
-	{ "🍱",	bstack },		            /* layout:1, Master on top, slaves on bottom */
+ 	{ "⑆",	tile },			            /* layout:0, Default: Master on left, slaves on right */
+	{ "ᚃ",	bstack },		            /* layout:1, Master on top, slaves on bottom */
 
-	{ "🍥",	spiral },		            /* layout:2, Fibonacci spiral */
-	{ "🍭",	dwindle },		            /* layout:3, Decreasing in size right and leftward */
+	{ "ᘓ",	spiral },		            /* layout:2, Fibonacci spiral */
+	{ "ᘏ",	dwindle },		            /* layout:3, Decreasing in size right and leftward */
 
-	{ "🃏",	deck },			            /* layout:4, Master on left, slaves in monocle-like mode on right */
- 	{ "🥪",	monocle },		            /* layout:5, All windows on top of eachother */
+	{ "🃎",	deck },			            /* layout:4, Master on left, slaves in monocle-like mode on right */
+ 	{ "🂠",	monocle },		            /* layout:5, All windows on top of eachother */
 
-	{ "🐙",	centeredmaster },		    /* layout:6, Master in middle, slaves on sides */
-	{ "🛸",	centeredfloatingmaster },	/* layout:7, Same but master floats */
+	{ "ⴼ",	centeredmaster },		    /* layout:6, Master in middle, slaves on sides */
+	{ "ⵐ",	centeredfloatingmaster },	/* layout:7, Same but master floats */
 
-	{ "🚧",	NULL },			            /* layout:8, no layout function means floating behavior */
+	{ "",	NULL },			            /* layout:8, no layout function means floating behavior */
 	{ NULL,		NULL },
 };
 
@@ -114,7 +114,6 @@ static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "167x48", NULL };
 static const char *clipboard[] = { "clipmenu", "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor,"-i", NULL };
 
-
 #include <X11/XF86keysym.h>
 #include "shiftview.c"
 static Key keys[] = {
@@ -137,8 +136,8 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,	XK_minus,	spawn,		SHCMD("rofi -show ssh") },
 	{ MODKEY,			XK_equal,	spawn,		SHCMD("addjournal") },
 	{ MODKEY|ShiftMask,	XK_equal,	spawn,		SHCMD("st -e showjrnl") },
-	{ MODKEY,			XK_BackSpace,	spawn,	SHCMD("sysact") },
-	{ MODKEY|ShiftMask,	XK_BackSpace,	spawn,	SHCMD("killall redshift-gtk || redshift-gtk") },
+	{ MODKEY,			XK_BackSpace,	        spawn,	SHCMD("sysact") },
+	{ MODKEY|ShiftMask,	XK_BackSpace,	        spawn,	SHCMD("killall redshift-gtk || redshift-gtk") },
 
 	{ MODKEY,			XK_Tab,		view,		{0} },
 	{ MODKEY,			XK_q,		killclient,	{0} },
@@ -158,16 +157,16 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,	XK_u,		setlayout,	{.v = &layouts[5]} },
 	{ MODKEY,			XK_i,		setlayout,	{.v = &layouts[6]} },
 	{ MODKEY|ShiftMask,	XK_i,		setlayout,	{.v = &layouts[7]} },
-	{ MODKEY,			XK_o,		incnmaster,     {.i = +1 } },
-	{ MODKEY|ShiftMask,	XK_o,		incnmaster,     {.i = -1 } },
+	{ MODKEY,			XK_o,		incnmaster, {.i = +1 } },
+	{ MODKEY|ShiftMask,	XK_o,		incnmaster, {.i = -1 } },
 	{ MODKEY,			XK_p,		spawn,		SHCMD("displayselect") },
 	{ MODKEY|ShiftMask,	XK_p,		spawn,		SHCMD("recent") },
   //{ MODKEY,			XK_bracketleft,		spawn,		SHCMD("") },
   //{ MODKEY|ShiftMask,	XK_bracketleft,		spawn,		SHCMD("") },
   //{ MODKEY,			XK_bracketright,	spawn,		SHCMD("") },
   //{ MODKEY|ShiftMask,	XK_bracketright,	spawn,		SHCMD("") },
-    { MODKEY,			XK_backslash,		spawn,		SHCMD("st -e neomutt ; pkill -RTMIN+12 dwmblocks") },
-	{ MODKEY|ShiftMask,	XK_backslash,		spawn,		SHCMD("mailsync") },
+    { MODKEY,			XK_backslash,		    spawn,		SHCMD("st -e neomutt ; pkill -RTMIN+12 dwmblocks") },
+	{ MODKEY|ShiftMask,	XK_backslash,		    spawn,		SHCMD("mailsync") },
 	{ MODKEY,		    XK_slash,	spawn,		SHCMD("mpc toggle") },
     { MODKEY|ShiftMask,	XK_slash,	spawn,		SHCMD("mpc stop") },
     { MODKEY,			XK_comma,	spawn,		SHCMD("mpc prev") },
@@ -178,18 +177,18 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,	XK_a,		spawn,		SHCMD("st -e pulsemixer;pkill -RTMIN+10 dwmblocks") },
     { MODKEY,		    XK_s,		spawn,		SHCMD("pavucontrol") },
 	{ MODKEY|ShiftMask,	XK_s,		spawn,		SHCMD("st -e alsamixer") },
-	{ MODKEY|ControlMask,	XK_s,		spawn,		SHCMD("newscaster") },
-	{ MODKEY,			XK_d,		spawn,          {.v = dmenucmd } },
+	{ MODKEY|ControlMask,	XK_s,	spawn,	    SHCMD("newscaster") },
+	{ MODKEY,			XK_d,		spawn,      {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,	XK_d,		togglegaps,	{0} },
 	{ MODKEY,			XK_f,		togglefullscr,	{0} },
 	{ MODKEY|ShiftMask,	XK_f,		setlayout,	{.v = &layouts[8]} },
-	{ MODKEY,			XK_g,		spawn,	SHCMD("google-chrome-stable") },
+	{ MODKEY,			XK_g,		spawn,	    SHCMD("google-chrome-stable") },
 	{ MODKEY|ShiftMask,	XK_g,		spawn,		SHCMD("firefox") },
 	{ MODKEY,			XK_h,		setmfact,	{.f = -0.01} },
-    { MODKEY|ShiftMask,	XK_h,		spawn,	SHCMD("st -e ytop")},
+    { MODKEY|ShiftMask,	XK_h,		spawn,	    SHCMD("st -e ytop")},
 	/* J and K are automatically bound above in STACKEYS */
 	{ MODKEY,			XK_l,		setmfact,      	{.f = +0.01} },
-    { MODKEY|ShiftMask,	XK_l,		spawn,	SHCMD("st -e tuts")},
+    { MODKEY|ShiftMask,	XK_l,		spawn,	    SHCMD("st -e tuts")},
 	{ MODKEY,			XK_apostrophe,	shiftview,	{ .i = -1 } },
 	{ MODKEY|ShiftMask,	XK_apostrophe,	shiftview,	{ .i = 1 } },
 	{ MODKEY,			XK_Return,	spawn,		{.v = termcmd } },
@@ -204,7 +203,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,	XK_c,		spawn,		SHCMD("toggle_webcam") },
 	{ MODKEY,			XK_v,		spawn,		{.v = clipboard } },
 	{ MODKEY|ShiftMask,	XK_v,		spawn,		SHCMD("st -e $EDITOR -c \"VimwikiIndex\"") },
-	{ MODKEY|ShiftMask,			XK_b,		togglebar,	{0} },
+	{ MODKEY|ShiftMask,	XK_b,		togglebar,	{0} },
 
 	{ MODKEY,	        XK_b,		spawn,		SHCMD("brave") },
 	{ MODKEY,			XK_n,		spawn,		SHCMD("st -e newsboat") },
@@ -218,7 +217,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,	XK_Right,	tagmon,		{.i = +1 } },
 
 	{ MODKEY,			XK_Insert,	spawn,		SHCMD("notify-send \"📋 Clipboard contents:\" \"$(xclip -o -selection clipboard)\"") },
-    {ALTKEY,            XK_Insert, spawn, SHCMD("pickcolor")},
+    {ALTKEY,            XK_Insert,  spawn,      SHCMD("pickcolor")},
 
     { MODKEY,			XK_F1,		spawn,		SHCMD("ducksearch") },
 	{ MODKEY,			XK_F2,		quit,		{1} },
@@ -232,10 +231,10 @@ static Key keys[] = {
 	{ MODKEY,			XK_F10,		spawn,		SHCMD("dmenuumount") },
 	/* { MODKEY,			XK_F11,		spawn,		SHCMD("") }, */
 	/* { MODKEY,			XK_F12,		spawn,		SHCMD("") }, */
-	{ MODKEY,			XK_space,	zoom,		{0} },
-    { MODKEY|ShiftMask,	XK_space,	spawn,		SHCMD("rofi-pass") },
-	{ MODKEY,		    XK_semicolon,	togglefloating,	{0} },
-	{ MODKEY|ShiftMask,	XK_semicolon,		togglesticky,	{0} },
+	{ MODKEY,			XK_space,	            zoom,		{0} },
+    { MODKEY|ShiftMask,	XK_space,	            spawn,		SHCMD("rofi-pass") },
+	{ MODKEY,		    XK_semicolon,	        togglefloating,	{0} },
+	{ MODKEY|ShiftMask,	XK_semicolon,		    togglesticky,	{0} },
 
 	{ 0,				XK_Print,	spawn,		SHCMD("maim pic-full-$(date '+%y%m%d-%H%M-%S').png") },
 	{ ShiftMask,		XK_Print,	spawn,		SHCMD("maimpick") },
@@ -243,13 +242,13 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,	XK_Print,	spawn,		SHCMD("dmenurecord kill") },
 	{ MODKEY,			XK_Delete,	spawn,		SHCMD("xsel -c && xsel -bc") },
 
-	{ 0, XF86XK_AudioMute,		spawn,		SHCMD("lmc mute ;pkill -RTMIN+10 dwmblocks") },
+	{ 0, XF86XK_AudioMute,		    spawn,		SHCMD("lmc mute ;pkill -RTMIN+10 dwmblocks") },
 	{ 0, XF86XK_AudioMicMute,		spawn,		SHCMD("amixer set Capture toggle") },
-	{ 0, XF86XK_AudioRaiseVolume,	spawn,	SHCMD("lmc up 5 ;pkill -RTMIN+10 dwmblocks") },
-	{ 0, XF86XK_AudioLowerVolume,	spawn,	SHCMD("lmc down 5 ;pkill -RTMIN+10 dwmblocks") },
-	{ 0, XF86XK_MonBrightnessUp,	spawn,	SHCMD("sudo brightnessctl s +5%") },
-	{ 0, XF86XK_MonBrightnessDown,	spawn,	SHCMD("sudo brightnessctl s 5%-") },
-    { 0, XF86XK_Tools,	        spawn,		SHCMD("toggle_keyboard") },
+	{ 0, XF86XK_AudioRaiseVolume,	spawn,	    SHCMD("lmc up 5 ;pkill -RTMIN+10 dwmblocks") },
+	{ 0, XF86XK_AudioLowerVolume,	spawn,	    SHCMD("lmc down 5 ;pkill -RTMIN+10 dwmblocks") },
+	{ 0, XF86XK_MonBrightnessUp,	spawn,	    SHCMD("sudo brightnessctl s +5%") },
+	{ 0, XF86XK_MonBrightnessDown,	spawn,	    SHCMD("sudo brightnessctl s 5%-") },
+    { 0, XF86XK_Tools,	            spawn,		SHCMD("toggle_keyboard") },
 
 };
 
