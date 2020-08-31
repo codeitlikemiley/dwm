@@ -4,7 +4,7 @@
 static const unsigned int borderpx       = 0;        /* border pixel of windows */
 static const unsigned int snap           = 20;       /* snap pixel */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
-static const unsigned int systrayspacing = 5;   /* systray spacing */
+static const unsigned int systrayspacing = 2;   /* systray spacing */
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
 static const int showsystray             = 1;     /* 0 means no systray */
 static const unsigned int gappih         = 20;       /* horiz inner gap between windows */
@@ -23,10 +23,20 @@ static char normfgcolor[]                = "#25188B";
 static char selfgcolor[]                 = "#FF4081";
 static char selbordercolor[]             = "#C9C4EE";
 static char selbgcolor[]                 = "#C9C4EE";
+static char statusfgcolor[]                = "#ffffff";
+static char statusbgcolor[]                = "#FF5792";
+static char statusbdcolor[]                = "#FF5792";
+
+// patch systray to use SchemeStatus , check bg color is bit darker when applied
 static char *colors[][3]                 = {
        /*               fg           bg           border   */
        [SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
        [SchemeSel]  = { selfgcolor,  selbgcolor,  selbordercolor  },
+	   [SchemeStatus]  = { statusfgcolor, statusbgcolor,  statusbdcolor  }, // Statusbar right {text,background,not used but cannot be empty}
+	   [SchemeTagsSel]  = { selfgcolor, selbgcolor,  selbordercolor  }, // Tagbar left selected {text,background,not used but cannot be empty}
+       [SchemeTagsNorm]  = { normfgcolor, normbgcolor,  normbordercolor  }, // Tagbar left unselected {text,background,not used but cannot be empty}
+       [SchemeInfoSel]  = { selfgcolor, selbgcolor,  selbordercolor  }, // infobar middle  selected {text,background,not used but cannot be empty}
+       [SchemeInfoNorm]  = { normfgcolor, normbgcolor,  normbordercolor  }, // infobar middle  unselected {text,background,not used but cannot be empty}
 };
 
 static const char *const autostart[] = {
