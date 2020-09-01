@@ -198,7 +198,8 @@ static Key keys[] = {
     { MODKEY|ShiftMask,	XK_h,		spawn,	    SHCMD("st -e ytop")},
 	/* J and K are automatically bound above in STACKEYS */
 	{ MODKEY,			XK_l,		setmfact,      	{.f = +0.01} },
-    { MODKEY|ShiftMask,	XK_l,		spawn,	    SHCMD("st -e tuts")},
+    { MODKEY|ShiftMask,	XK_l,		spawn,		SHCMD("cabl") },
+    { MODKEY|ControlMask,	XK_l,		spawn,	    SHCMD("st -e tuts")},
 	{ MODKEY,			XK_apostrophe,	shiftview,	{ .i = -1 } },
 	{ MODKEY|ShiftMask,	XK_apostrophe,	shiftview,	{ .i = 1 } },
 	{ MODKEY,			XK_Return,	spawn,		{.v = termcmd } },
@@ -209,7 +210,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,	XK_z,		incrgaps,	{.i = -1 } },
 	{ MODKEY,			XK_x,		spawn,		SHCMD("slock & xset dpms force off; mpc pause; pauseallmpv") },
 	{ MODKEY|ShiftMask,	XK_x,		spawn,		SHCMD("[ \"$(printf \"No\\nYes\" | dmenu -i -nb darkred -sb red -sf white -nf gray -p \"Shutdown computer?\")\" = Yes ] && sudo -A shutdown -h now") },
-	{ MODKEY,			XK_c,		spawn,		SHCMD("cabl") },
+	{ MODKEY,			XK_c,		spawn,		SHCMD("st -e calcurse") },
 	{ MODKEY|ShiftMask,	XK_c,		spawn,		SHCMD("toggle_webcam") },
 	{ MODKEY,			XK_v,		spawn,		{.v = clipboard } },
 	{ MODKEY|ShiftMask,	XK_v,		spawn,		SHCMD("st -e $EDITOR -c \"VimwikiIndex\"") },
