@@ -62,6 +62,7 @@ static const Rule rules[] = {
 	{ "firefox",            NULL,                   NULL,       1 << 2,       0,           0,         1,        -1 },
 	{ "Brave-browser",      NULL,                   NULL,       1 << 2,       0,           0,         1,        -1 },
 	{ "code-oss",           NULL,                   NULL,       1 << 3,       0,           0,         1,        -1 },
+	{ "DesktopEditors",     NULL,                   NULL,       1 << 3,       0,           0,         1,        -1 },
 	{ NULL,NULL,            "Android Emulator - dev:5554",      1 << 4,       1,           0,         1,        -1 },
 	{ "Gimp",               NULL,                   NULL,       1 << 5,       0,           0,         1,        -1 },
 	{ "Inkscape",           NULL,                   NULL,       1 << 5,       0,           0,         1,        -1 },
@@ -157,7 +158,7 @@ static Key keys[] = {
 	{ MODKEY,	        XK_e,		spawn,		SHCMD("dmenu_edit") },
 	/* this is for git bare repo commit */
 	{ MODKEY|ShiftMask,	XK_e,		spawn,		SHCMD("dac") },
-	{ MODKEY|ShiftMask,	XK_r,		spawn,		SHCMD("nemo") },
+	{ MODKEY|ShiftMask,	XK_r,		spawn,		SHCMD("dmenu_fm") },
 	{ MODKEY,			XK_r,		spawn,		SHCMD("st -e ranger") },
 	{ MODKEY,			XK_t,		setlayout,	{.v = &layouts[0]} },
 	{ MODKEY|ShiftMask,	XK_t,		setlayout,	{.v = &layouts[1]} },
@@ -183,11 +184,10 @@ static Key keys[] = {
 	{ MODKEY,			XK_period,	spawn,		SHCMD("mpc next") },
     { MODKEY|ShiftMask,	XK_comma,	spawn,		SHCMD("lmc back 10") },
 	{ MODKEY|ShiftMask,	XK_period,	spawn,		SHCMD("lmc forward 10") },
-    { MODKEY,	        XK_a,		spawn,		SHCMD("sirula") },
-	{ MODKEY|ShiftMask,	XK_a,		spawn,		SHCMD("st -e pulsemixer;pkill -RTMIN+10 dwmblocks") },
+    { MODKEY,	        XK_a,		spawn,		SHCMD("st -e pulsemixer;pkill -RTMIN+10 dwmblocks") },
+	{ MODKEY|ShiftMask,	XK_a,		spawn,		SHCMD("st -e alsamixer") },
     { MODKEY,		    XK_s,		spawn,		SHCMD("pavucontrol") },
-	{ MODKEY|ShiftMask,	XK_s,		spawn,		SHCMD("st -e alsamixer") },
-	{ MODKEY|ControlMask,	XK_s,	spawn,	    SHCMD("newscaster") },
+	{ MODKEY|ShiftMask,	XK_s,		spawn,		SHCMD("newscaster") },
 	{ MODKEY,			XK_d,		spawn,      {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,	XK_d,		togglegaps,	{0} },
 	{ MODKEY,			XK_f,		togglefullscr,	{0} },
@@ -199,11 +199,10 @@ static Key keys[] = {
 	/* J and K are automatically bound above in STACKEYS */
 	{ MODKEY,			XK_l,		setmfact,      	{.f = +0.01} },
     { MODKEY|ShiftMask,	XK_l,		spawn,		SHCMD("cabl") },
-    { MODKEY|ControlMask,	XK_l,		spawn,	    SHCMD("st -e tuts")},
 	{ MODKEY,			XK_apostrophe,	shiftview,	{ .i = -1 } },
 	{ MODKEY|ShiftMask,	XK_apostrophe,	shiftview,	{ .i = 1 } },
 	{ MODKEY,			XK_Return,	spawn,		{.v = termcmd } },
-    { MODKEY|ShiftMask,	XK_Return,	spawn,		SHCMD("alacritty") },
+    { MODKEY|ShiftMask,	XK_Return,	spawn,		SHCMD("nemo") },
 	{ MODKEY,		    XK_grave,	togglescratch,	{.v = scratchpadcmd } },
 
 	{ MODKEY,			XK_z,		incrgaps,	{.i = +1 } },
@@ -215,7 +214,6 @@ static Key keys[] = {
 	{ MODKEY,			XK_v,		spawn,		{.v = clipboard } },
 	{ MODKEY|ShiftMask,	XK_v,		spawn,		SHCMD("st -e $EDITOR -c \"VimwikiIndex\"") },
 	{ MODKEY|ShiftMask,	XK_b,		togglebar,	{0} },
-
 	{ MODKEY,	        XK_b,		spawn,		SHCMD("brave") },
 	{ MODKEY,			XK_n,		spawn,		SHCMD("st -e newsboat") },
 	{ MODKEY|ShiftMask,	XK_n,		spawn,		SHCMD("newsup") },
@@ -228,6 +226,8 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,	XK_Right,	tagmon,		{.i = +1 } },
 
 	{ MODKEY,			XK_Insert,	spawn,		SHCMD("notify-send \"📋 Clipboard contents:\" \"$(xclip -o -selection clipboard)\"") },
+	/* Alt and ctrl key bindings */
+	{ MODKEY|ControlMask,	XK_l,		spawn,	    SHCMD("st -e tuts")},
     {ALTKEY,            XK_Insert,  spawn,      SHCMD("pickcolor")},
 
     { MODKEY,			XK_F1,		spawn,		SHCMD("ducksearch") },
