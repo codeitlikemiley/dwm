@@ -50,7 +50,8 @@ static const char *const autostart[] = {
 };
 
 /* tagging */
-static const char *tags[] = { " ¹", " ²", " ³", "﬏ ⁴", " ⁵", " ⁶", " ⁷", " ⁸", " ⁹" };
+static const char *tags[] = { " ¹", " ²", "﬏ ³", " ⁴", " ⁵", " ⁶", " ⁷", " ⁸", "💻⁹" };
+
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -58,11 +59,11 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class                instance                title       tags mask     isfloating   isterminal noswallow monitor */
-	{ "Google-chrome",      "google-chrome",        NULL,       1 << 0,       0,           0,         1,        -1 },
-	{ "firefox",            NULL,                   NULL,       1 << 2,       0,           0,         1,        -1 },
-	{ "Brave-browser",      NULL,                   NULL,       1 << 2,       0,           0,         1,        -1 },
-	{ "code-oss",           NULL,                   NULL,       1 << 3,       0,           0,         1,        -1 },
-	{ "DesktopEditors",     NULL,                   NULL,       1 << 3,       0,           0,         1,        -1 },
+	{ "firefox",            NULL,                   NULL,       1 << 1,       0,           0,         1,        -1 },
+	{ "Brave-browser",      NULL,                   NULL,       1 << 1,       0,           0,         1,        -1 },
+	{ "code-oss",           NULL,                   NULL,       1 << 2,       0,           0,         1,        -1 },
+	{ "DesktopEditors",     NULL,                   NULL,       1 << 2,       0,           0,         1,        -1 },
+	{ "Google-chrome",      "google-chrome",        NULL,       1 << 3,       0,           0,         1,        -1 },
 	{ NULL,NULL,            "Android Emulator - dev:5554",      1 << 4,       1,           0,         1,        -1 },
 	{ "Gimp",               NULL,                   NULL,       1 << 5,       0,           0,         1,        -1 },
 	{ "Inkscape",           NULL,                   NULL,       1 << 5,       0,           0,         1,        -1 },
@@ -86,17 +87,17 @@ static const int resizehints = 1;       /* 1 means respect size hints in tiled r
 #include "vanitygaps.c"
 static const Layout layouts[] = {
 	/* symbol                           arrange function */
- 	{ "⑆",	tile },			            /* layout:0, Default: Master on left, slaves on right */
-	{ "ᚃ",	bstack },		            /* layout:1, Master on top, slaves on bottom */
+ 	{ "﬿",	tile },			            /* layout:0, Default: Master on left, slaves on right */
+	{ "ﳶ",	bstack },		            /* layout:1, Master on top, slaves on bottom */
 
-	{ "ᘓ",	spiral },		            /* layout:2, Fibonacci spiral */
-	{ "ᘏ",	dwindle },		            /* layout:3, Decreasing in size right and leftward */
+	{ "🍥",	spiral },		            /* layout:2, Fibonacci spiral */
+	{ "侀",	dwindle },		            /* layout:3, Decreasing in size right and leftward */
 
-	{ "🃎",	deck },			            /* layout:4, Master on left, slaves in monocle-like mode on right */
+	{ "",	deck },			            /* layout:4, Master on left, slaves in monocle-like mode on right */
  	{ "🂠",	monocle },		            /* layout:5, All windows on top of eachother */
 
-	{ "ⴼ",	centeredmaster },		    /* layout:6, Master in middle, slaves on sides */
-	{ "ⵐ",	centeredfloatingmaster },	/* layout:7, Same but master floats */
+	{ "恵",	centeredmaster },		    /* layout:6, Master in middle, slaves on sides */
+	{ "",	centeredfloatingmaster },	/* layout:7, Same but master floats */
 
 	{ "",	NULL },			            /* layout:8, no layout function means floating behavior */
 	{ NULL,		NULL },
