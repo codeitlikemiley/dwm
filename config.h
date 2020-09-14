@@ -46,11 +46,12 @@ static const char *const autostart[] = {
     "sh", "-c", "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1", NULL,
     "clipmenud", NULL,
     "optimus-manager-qt", NULL,
+    "mpd", NULL,
 	NULL /* terminate */
 };
 
 /* tagging */
-static const char *tags[] = { " ¹", " ²", "﬏ ³", " ⁴", " ⁵", " ⁶", " ⁷", " ⁸", "💻⁹" };
+static const char *tags[] = { " ¹", " ²", "﬏ ³", " ⁴", " ⁵", " ⁶", " ⁷", " ⁸", " ⁹" };
 
 
 static const Rule rules[] = {
@@ -68,7 +69,6 @@ static const Rule rules[] = {
 	{ "Gimp",               NULL,                   NULL,       1 << 5,       0,           0,         1,        -1 },
 	{ "Inkscape",           NULL,                   NULL,       1 << 5,       0,           0,         1,        -1 },
 	{ "kdenlive",           NULL,                   NULL,       1 << 5,       0,           0,         1,        -1 },
-	{ "mpv",                NULL,                   NULL,       1 << 5,       0,           0,         1,        -1 },
 	{ "Steam",              NULL,                   NULL,       1 << 6,       1,           0,         1,        -1 },
 	{ "dota2",              NULL,                   NULL,       1 << 6,       0,           0,         1,        -1 },
 	{ "Meld",               NULL,                   NULL,       1 << 7,       0,           0,         1,        -1 },
@@ -88,7 +88,7 @@ static const int resizehints = 1;       /* 1 means respect size hints in tiled r
 static const Layout layouts[] = {
 	/* symbol                           arrange function */
  	{ "﬿",	tile },			            /* layout:0, Default: Master on left, slaves on right */
-	{ "ﳶ",	bstack },		            /* layout:1, Master on top, slaves on bottom */
+	{ "",	bstack },		            /* layout:1, Master on top, slaves on bottom */
 
 	{ "🍥",	spiral },		            /* layout:2, Fibonacci spiral */
 	{ "侀",	dwindle },		            /* layout:3, Decreasing in size right and leftward */
