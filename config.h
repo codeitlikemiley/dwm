@@ -65,7 +65,7 @@ static const Rule rules[] = {
 	{ "code-oss",           NULL,                   NULL,       1 << 2,       0,           0,         1,        -1 },
 	{ "DesktopEditors",     NULL,                   NULL,       1 << 2,       0,           0,         1,        -1 },
 	{ "Google-chrome",      "google-chrome",        NULL,       1 << 3,       0,           0,         1,        -1 },
-	{ NULL,NULL,            "Android Emulator - dev:5554",      1 << 4,       1,           0,         1,        -1 },
+	{ NULL,NULL,            "Android Emulator -",      1 << 4,       1,           0,         1,        -1 },
 	{ "Gimp",               NULL,                   NULL,       1 << 5,       0,           0,         1,        -1 },
 	{ "Inkscape",           NULL,                   NULL,       1 << 5,       0,           0,         1,        -1 },
 	{ "kdenlive",           NULL,                   NULL,       1 << 5,       0,           0,         1,        -1 },
