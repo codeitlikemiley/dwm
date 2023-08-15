@@ -1,4 +1,4 @@
-# Goldcoders's build of DWM for Huawei Matebook 13
+# Codeitlikemiley's build of DWM (arch based distros)
 
 ## Patches
 - Systray
